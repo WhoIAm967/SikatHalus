@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Harga — SikatHalus Semarang</title>
+<meta name="description" content="Daftar harga cuci sepatu standar mahasiswa area UNNES Sekaran dan Gunungpati.">
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html" aria-label="StepClean beranda">
+      <span class="brand-mark" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 16.5C3 16.5 6 17 8.5 17H20C20.5 17 21 16.6 21 16V14.5C21 14 20.6 13.6 20.1 13.5L12 12L10.5 7.5C10.4 7 10 6.7 9.5 6.7H7C6.4 6.7 6 7.1 6 7.7V11H3V16.5Z" fill="currentColor"/><circle cx="7.5" cy="18.5" r="1.4" fill="currentColor"/><circle cx="17.5" cy="18.5" r="1.4" fill="currentColor"/></svg></span>
+      <span class="brand-text">SikatHalus <em>UNNES Gunungpati • Semarang</em></span>
+    </a>
+    <!-- NAVIGASI BARU DI index.html -->
+  <nav class="nav" aria-label="Navigasi utama">
+    <a href="mitra.html">Cari Mitra</a>
+    <a href="cara-kerja.html">Cara Kerja</a>
+    <a href="harga.html">Harga</a>
+    <a href="lacak.html">Lacak</a>
+    <a href="dashboard.html">Dashboard Mitra</a>
+    <a href="gabung.html" class="nav-cta">Daftarkan Usaha</a>
+  </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">Menu</button>
+  </div>
+  <div class="mobile-nav" id="mobileNav" hidden>
+    <a href="#mitra">Cari Mitra</a>
+    <a href="#cara">Cara Kerja</a>
+    <a href="#harga">Harga</a>
+    <a href="#lacak">Lacak</a>
+    <a href="#dashboard">Dashboard Mitra</a>
+    <a href="#gabung">Daftarkan Usaha</a>
+  </div>
+</header>
+
+<main>
+  <!-- HARGA -->
+  <section id="harga" class="section wrap" style="padding-top: 40px;">
+    <h2>Harga mahasiswa — area UNNES</h2>
+    <p class="muted">Acuan harga sekitar Sekaran–Gunungpati. Mitra boleh promo lebih murah, tidak boleh lebih mahal.</p>
+    <div class="price-table" role="table" aria-label="Daftar harga">
+      <div role="row" class="price-head"><span>Layanan</span><span>Estimasi</span><span>Harga mulai</span></div>
+      <div role="row"><span><strong>Fast Clean</strong><em>Upper + midsole, tanpa rendam. Untuk kotor ringan harian.</em></span><span>1 hari</span><span>Rp12.000</span></div>
+      <div role="row"><span><strong>Deep Clean</strong><em>Bongkar insole & tali, cuci rendam, detail sikat.</em></span><span>1–2 hari</span><span>Rp30.000</span></div>
+      <div role="row"><span><strong>Leather & Suede Care</strong><em>Pembersih khusus + conditioner, tanpa mesin panas.</em></span><span>2–3 hari</span><span>Rp55.000</span></div>
+      <div role="row"><span><strong>Unyellowing Midsole</strong><em>Oksidasi terkontrol 2 sesi untuk midsole menguning.</em></span><span>3–5 hari</span><span>Rp60.000</span></div>
+      <div role="row"><span><strong>Repaint / Recolor</strong><em>Satu warna, termasuk sealing. Konsultasi warna dulu.</em></span><span>5–7 hari</span><span>Rp90.000</span></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div><strong>SikatHalus Gunungpati</strong><p class="muted small">Jl. Sekaran Raya No. 9, Gunungpati, Semarang<br>Senin–Sabtu 09.00–18.00 • CS 0822-4100-2211</p></div>
+    <div><strong>Pelanggan</strong><br><a href="#mitra">Cari mitra</a><br><a href="#harga">Harga</a><br><a href="#lacak">Lacak order</a></div>
+    <div><strong>Mitra</strong><br><a href="#gabung">Pendaftaran</a><br><a href="#cara">Standar operasional</a></div>
+  </div>
+  <p class="wrap muted small">© 2026 SikatHalus Gunungpati. Titik awal peta: Gerbang UNNES Sekaran. Jarak dihitung di perangkat Anda.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="common.js"></script>
+</body>
+</html>

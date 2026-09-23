@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SikatHalus Semarang — Cuci Sepatu Terdekat UNNES Gunungpati</title>
+<meta name="description" content="StepClean Semarang menghubungkan mahasiswa dan warga Gunungpati dengan tempat cuci sepatu terdekat sekitar UNNES Sekaran. Pesan, pantau 5 tahap, antar-jemput tercatat.">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html" aria-label="StepClean beranda">
+      <span class="brand-mark" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 16.5C3 16.5 6 17 8.5 17H20C20.5 17 21 16.6 21 16V14.5C21 14 20.6 13.6 20.1 13.5L12 12L10.5 7.5C10.4 7 10 6.7 9.5 6.7H7C6.4 6.7 6 7.1 6 7.7V11H3V16.5Z" fill="currentColor"/><circle cx="7.5" cy="18.5" r="1.4" fill="currentColor"/><circle cx="17.5" cy="18.5" r="1.4" fill="currentColor"/></svg></span>
+      <span class="brand-text">SikatHalus <em>UNNES Gunungpati • Semarang</em></span>
+    </a>
+    <!-- NAVIGASI BARU DI index.html -->
+  <nav class="nav" aria-label="Navigasi utama">
+    <a href="mitra.html">Cari Mitra</a>
+    <a href="cara-kerja.html">Cara Kerja</a>
+    <a href="harga.html">Harga</a>
+    <a href="lacak.html">Lacak</a>
+    <a href="dashboard.html">Dashboard Mitra</a>
+    <a href="gabung.html" class="nav-cta">Daftarkan Usaha</a>
+  </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">Menu</button>
+  </div>
+  <div class="mobile-nav" id="mobileNav" hidden>
+    <a href="#mitra">Cari Mitra</a>
+    <a href="#cara">Cara Kerja</a>
+    <a href="#harga">Harga</a>
+    <a href="#lacak">Lacak</a>
+    <a href="#dashboard">Dashboard Mitra</a>
+    <a href="#gabung">Daftarkan Usaha</a>
+  </div>
+</header>
+
+<main>
+     <section id="mitra" class="section wrap">
+    <div class="section-head">
+      <div>
+        <h2>Mitra sekitar UNNES Gunungpati</h2>
+        <p class="muted">Default dihitung dari Gerbang UNNES Sekaran. Aktifkan lokasi untuk hitung dari kos / posisi Anda.</p>
+      </div>
+      <button class="btn secondary" id="locateBtn">Deteksi Lokasi Saya</button>
+    </div>
+
+    <div class="filters" role="search">
+      <label class="field grow">Cari nama / area
+        <input type="search" id="q" placeholder="Contoh: Sekaran, Patemon, Tembalang" autocomplete="off">
+      </label>
+      <label class="field">Radius
+        <select id="fRadius">
+          <option value="5">Dalam 5 km</option>
+          <option value="10" selected>Dalam 10 km</option>
+          <option value="15">Dalam 15 km</option>
+          <option value="25">Dalam 25 km</option>
+        </select>
+      </label>
+      <label class="field">Layanan
+        <select id="fLayanan">
+          <option value="">Semua layanan</option>
+          <option>Deep Clean</option>
+          <option>Fast Clean</option>
+          <option>Leather & Suede</option>
+          <option>Unyellowing</option>
+          <option>Repaint</option>
+        </select>
+      </label>
+      <label class="field">Urutkan
+        <select id="fUrut">
+          <option value="jarak">Jarak terdekat</option>
+          <option value="rating">Rating tertinggi</option>
+          <option value="harga">Harga termurah</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="fBuka"> Buka sekarang saja</label>
+    </div>
+    <p class="muted small" id="lokasiInfo">Menampilkan mitra sekitar UNNES Sekaran.</p>
+    <div class="mitra-layout">
+      <div class="map-box">
+        <div id="map" aria-label="Peta lokasi mitra"></div>
+        <p class="muted small map-note">Klik pin untuk nama mitra. Klik “Rute” di kartu untuk buka Google Maps.</p>
+      </div>
+      <div class="grid" id="mitraGrid" aria-live="polite"></div>
+    </div>
+  </section>
+
+
+  <div class="modal-backdrop" id="modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h3 id="modalTitle">Booking</h3>
+      <button id="modalClose" aria-label="Tutup">Tutup</button>
+    </div>
+    <form id="bookForm">
+      <p class="muted small" id="bookMitraInfo"></p>
+      <div class="row2">
+        <label>Layanan
+          <select id="bLayanan" required></select>
+        </label>
+        <label>Metode serah terima
+          <select id="bMetode" required>
+            <option value="Antar sendiri">Antar sendiri ke workshop</option>
+            <option value="Jemput kurir mitra (Rp15rb)">Jemput kurir mitra (+Rp15.000)</option>
+            <option value="Kirim ojek online">Kirim via ojek online (tanggung sendiri)</option>
+          </select>
+        </label>
+      </div>
+      <div class="row2">
+        <label>Nama pemesan<input id="bNama" required placeholder="Nama sesuai KTP / panggilan"></label>
+        <label>No. WhatsApp<input id="bWa" required placeholder="08xx" inputmode="tel"></label>
+      </div>
+      <label>Catatan (opsional)<input id="bCatatan" placeholder="Contoh: noda saus di mesh kanan, size 42"></label>
+      <div class="total-row"><span>Estimasi total</span><strong id="bTotal">—</strong></div>
+      <button class="btn primary full" type="submit">Buat Booking & Dapat Kode</button>
+      <p class="muted small">Dengan memesan, Anda setuju difoto kondisi awalnya dan dihubungi via WhatsApp untuk update status.</p>
+    </form>
+    <div id="bookSuccess" hidden></div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div><strong>SikatHalus Gunungpati</strong><p class="muted small">Jl. Sekaran Raya No. 9, Gunungpati, Semarang<br>Senin–Sabtu 09.00–18.00 • CS 0822-4100-2211</p></div>
+    <div><strong>Pelanggan</strong><br><a href="#mitra">Cari mitra</a><br><a href="#harga">Harga</a><br><a href="#lacak">Lacak order</a></div>
+    <div><strong>Mitra</strong><br><a href="#gabung">Pendaftaran</a><br><a href="#cara">Standar operasional</a></div>
+  </div>
+  <p class="wrap muted small">© 2026 SikatHalus Gunungpati. Titik awal peta: Gerbang UNNES Sekaran. Jarak dihitung di perangkat Anda.</p>
+</footer>
+
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script src="mitra.js"></script>
+</body>
+</html>

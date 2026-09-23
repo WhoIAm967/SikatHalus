@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SikatHalus Semarang — Cuci Sepatu Terdekat UNNES Gunungpati</title>
+<meta name="description" content="StepClean Semarang menghubungkan mahasiswa dan warga Gunungpati dengan tempat cuci sepatu terdekat sekitar UNNES Sekaran. Pesan, pantau 5 tahap, antar-jemput tercatat.">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="brand" href="index.html" aria-label="StepClean beranda">
+      <span class="brand-mark" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 16.5C3 16.5 6 17 8.5 17H20C20.5 17 21 16.6 21 16V14.5C21 14 20.6 13.6 20.1 13.5L12 12L10.5 7.5C10.4 7 10 6.7 9.5 6.7H7C6.4 6.7 6 7.1 6 7.7V11H3V16.5Z" fill="currentColor"/><circle cx="7.5" cy="18.5" r="1.4" fill="currentColor"/><circle cx="17.5" cy="18.5" r="1.4" fill="currentColor"/></svg></span>
+      <span class="brand-text">SikatHalus <em>UNNES Gunungpati • Semarang</em></span>
+    </a>
+    <!-- NAVIGASI BARU DI index.html -->
+  <nav class="nav" aria-label="Navigasi utama">
+    <a href="mitra.html">Cari Mitra</a>
+    <a href="cara-kerja.html">Cara Kerja</a>
+    <a href="harga.html">Harga</a>
+    <a href="lacak.html">Lacak</a>
+    <a href="dashboard.html">Dashboard Mitra</a>
+    <a href="gabung.html" class="nav-cta">Daftarkan Usaha</a>
+  </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">Menu</button>
+  </div>
+  <div class="mobile-nav" id="mobileNav" hidden>
+    <a href="#mitra">Cari Mitra</a>
+    <a href="#cara">Cara Kerja</a>
+    <a href="#harga">Harga</a>
+    <a href="#lacak">Lacak</a>
+    <a href="#dashboard">Dashboard Mitra</a>
+    <a href="#gabung">Daftarkan Usaha</a>
+  </div>
+</header>
+
+<main id="beranda">
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">8 mitra sekitar UNNES • Mulai Rp12 rb • Garansi cuci ulang 2x24 jam</p>
+      <h1>Cuci sepatu terdekat UNNES, terpantau sampai selesai.</h1>
+      <p class="lede">Fokus area Sekaran, Patemon, Gunungpati, Tembalang, dan Banyumanik. Pilih berdasarkan jarak dari kampus atau posisi Anda, harga pasti di depan, pantau 5 tahap sampai siap diambil.</p>
+      <div class="hero-actions">
+        <button class="btn primary" id="heroLocate">Gunakan Lokasi Saya</button>
+        <a class="btn ghost" href="#mitra">Lihat Mitra Sekitar UNNES</a>
+      </div>
+      <div class="hero-meta" id="heroLocationStatus" role="status">Titik awal: Gerbang UNNES Sekaran, Gunungpati. Aktifkan lokasi untuk jarak dari posisi Anda.</div>
+      <dl class="hero-stats">
+        <div><dt>0,2–6 km</dt><dd>jarak mitra dari Gerbang UNNES</dd></div>
+        <div><dt>Rp12 rb</dt><dd>harga mulai fast clean mahasiswa</dd></div>
+        <div><dt>1–2 hari</dt><dd>rata-rata selesai area Sekaran</dd></div>
+      </dl>
+    </div>
+    <aside class="hero-card" aria-label="Contoh pelacakan">
+      <div class="hero-card-head">
+        <div>
+          <p class="muted small">Kode booking</p>
+          <p class="code">CS-7K2PQA • Deep Clean</p>
+        </div>
+        <span class="pill progress">Tahap 3/5</span>
+      </div>
+      <ol class="timeline mini">
+        <li class="done"><span class="dot"></span><div><strong>Diterima mitra</strong><p>Senin 10.20 — CleanSteps Sekaran, foto awal 4 sisi</p></div></li>
+        <li class="done"><span class="dot"></span><div><strong>Antrian cuci</strong><p>Senin 13.05</p></div></li>
+        <li class="active"><span class="dot"></span><div><strong>Proses cuci + sikat detail</strong><p>Sedang dikerjakan • estimasi selesai Rabu</p></div></li>
+        <li><span class="dot"></span><div><strong>Pengeringan & QC</strong><p>Menunggu</p></div></li>
+        <li><span class="dot"></span><div><strong>Siap diambil / diantar</strong><p>Menunggu</p></div></li>
+      </ol>
+      <a href="#lacak" class="link">Coba lacak dengan kode demo: CS-DEMO1</a>
+    </aside>
+  </section>
+
+  <!-- TRUST BAR -->
+  <!-- <section class="trust wrap" aria-label="Jaminan layanan">
+    <div><strong>Foto sebelum–sesudah</strong><p>Wajib di tiap order. Komplain tanpa foto ditolak mitra.</p></div>
+    <div><strong>Harga dikunci saat booking</strong><p>Tidak ada biaya tambahan di tempat.</p></div>
+    <div><strong>Antar-jemput tercatat</strong><p>Kurir mitra / ojek online dengan nomor resi.</p></div>
+  </section> -->
+
+  <!-- MITRA -->
+  <!-- <section id="mitra" class="section wrap">
+    <div class="section-head">
+      <div>
+        <h2>Mitra sekitar UNNES Gunungpati</h2>
+        <p class="muted">Default dihitung dari Gerbang UNNES Sekaran. Aktifkan lokasi untuk hitung dari kos / posisi Anda.</p>
+      </div>
+      <button class="btn secondary" id="locateBtn">Deteksi Lokasi Saya</button>
+    </div>
+
+    <div class="filters" role="search">
+      <label class="field grow">Cari nama / area
+        <input type="search" id="q" placeholder="Contoh: Sekaran, Patemon, Tembalang" autocomplete="off">
+      </label>
+      <label class="field">Radius
+        <select id="fRadius">
+          <option value="5">Dalam 5 km</option>
+          <option value="10" selected>Dalam 10 km</option>
+          <option value="15">Dalam 15 km</option>
+          <option value="25">Dalam 25 km</option>
+        </select>
+      </label>
+      <label class="field">Layanan
+        <select id="fLayanan">
+          <option value="">Semua layanan</option>
+          <option>Deep Clean</option>
+          <option>Fast Clean</option>
+          <option>Leather & Suede</option>
+          <option>Unyellowing</option>
+          <option>Repaint</option>
+        </select>
+      </label>
+      <label class="field">Urutkan
+        <select id="fUrut">
+          <option value="jarak">Jarak terdekat</option>
+          <option value="rating">Rating tertinggi</option>
+          <option value="harga">Harga termurah</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="fBuka"> Buka sekarang saja</label>
+    </div>
+    <p class="muted small" id="lokasiInfo">Menampilkan mitra sekitar UNNES Sekaran.</p>
+    <div class="mitra-layout">
+      <div class="map-box">
+        <div id="map" aria-label="Peta lokasi mitra"></div>
+        <p class="muted small map-note">Klik pin untuk nama mitra. Klik “Rute” di kartu untuk buka Google Maps.</p>
+      </div>
+      <div class="grid" id="mitraGrid" aria-live="polite"></div>
+    </div>
+  </section> -->
+
+  <!-- CARA KERJA -->
+  <!-- <section id="cara" class="section band">
+    <div class="wrap">
+      <h2>Alur yang dipakai semua mitra</h2>
+      <ol class="steps">
+        <li><span>1</span><div><strong>Pilih mitra & kunci harga</strong><p>Anda pilih layanan, jadwal antar atau jemput, lalu dapat kode booking seperti CS-XXXXXX.</p></div></li>
+        <li><span>2</span><div><strong>Serah terima tercatat</strong><p>Mitra foto kondisi awal 4 sisi. Foto ini jadi acuan garansi.</p></div></li>
+        <li><span>3</span><div><strong>Pantau 5 tahap</strong><p>Status bergerak otomatis: Diterima → Antrian → Dicuci → QC → Siap. Notifikasi via WhatsApp.</p></div></li>
+        <li><span>4</span><div><strong>Ambil atau diantar</strong><p>Bayar di awal via transfer/QRIS atau tunai saat serah terima, sesuai kebijakan tiap mitra.</p></div></li>
+      </ol>
+    </div>
+  </section> -->
+
+  <!-- HARGA -->
+  <!-- <section id="harga" class="section wrap">
+    <h2>Harga mahasiswa — area UNNES</h2>
+    <p class="muted">Acuan harga sekitar Sekaran–Gunungpati. Mitra boleh promo lebih murah, tidak boleh lebih mahal.</p>
+    <div class="price-table" role="table" aria-label="Daftar harga">
+      <div role="row" class="price-head"><span>Layanan</span><span>Estimasi</span><span>Harga mulai</span></div>
+      <div role="row"><span><strong>Fast Clean</strong><em>Upper + midsole, tanpa rendam. Untuk kotor ringan harian.</em></span><span>1 hari</span><span>Rp12.000</span></div>
+      <div role="row"><span><strong>Deep Clean</strong><em>Bongkar insole & tali, cuci rendam, detail sikat.</em></span><span>1–2 hari</span><span>Rp30.000</span></div>
+      <div role="row"><span><strong>Leather & Suede Care</strong><em>Pembersih khusus + conditioner, tanpa mesin panas.</em></span><span>2–3 hari</span><span>Rp55.000</span></div>
+      <div role="row"><span><strong>Unyellowing Midsole</strong><em>Oksidasi terkontrol 2 sesi untuk midsole menguning.</em></span><span>3–5 hari</span><span>Rp60.000</span></div>
+      <div role="row"><span><strong>Repaint / Recolor</strong><em>Satu warna, termasuk sealing. Konsultasi warna dulu.</em></span><span>5–7 hari</span><span>Rp90.000</span></div>
+    </div>
+  </section> -->
+
+  <!-- LACAK -->
+  <!-- <section id="lacak" class="section band">
+    <div class="wrap lacak-grid">
+      <div>
+        <h2>Lacak cucian Anda</h2>
+        <p class="muted">Masukkan kode dari struk / WhatsApp. Contoh kode demo: <button class="inline-code" data-demo="CS-DEMO1">CS-DEMO1</button>, <button class="inline-code" data-demo="CS-DEMO2">CS-DEMO2</button></p>
+        <form id="trackForm" class="track-form">
+          <label>Kode booking
+            <input id="trackInput" placeholder="CS-XXXXXX" autocomplete="off" spellcheck="false">
+          </label>
+          <button class="btn primary" type="submit">Lacak</button>
+        </form>
+        <div id="trackResult" aria-live="polite"></div>
+      </div>
+      <div class="lacak-help">
+        <h3>Kode tidak ketemu?</h3>
+        <ul>
+          <li>Cek huruf O vs angka 0 — kode hanya pakai huruf A–Z dan angka.</li>
+          <li>Order di bawah 15 menit kadang belum masuk antrean mitra.</li>
+          <li>Hubungi mitra dengan menyebut kode + nama pemesan.</li>
+        </ul>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- BOOKING HISTORY -->
+  <!-- <section class="section wrap">
+    <h2>Booking dari perangkat ini</h2>
+    <p class="muted">Tersimpan lokal di browser. Cocok untuk warnet / HP bersama: catat kode Anda.</p>
+    <div id="myOrders" class="my-orders"></div>
+  </section> -->
+
+  <!-- DASHBOARD MITRA -->
+  <!-- <section id="dashboard" class="section band">
+    <div class="wrap">
+      <h2>Dashboard mitra — update status order</h2>
+      <p class="muted">Untuk demo: pilih nama workshop, lalu kelola order yang masuk ke workshop itu. Perubahan langsung terlihat di halaman Lacak.</p>
+      <div class="filters">
+        <label class="field grow">Workshop
+          <select id="dMitra"></select>
+        </label>
+        <label class="field">Filter status
+          <select id="dFilter">
+            <option value="">Semua</option>
+            <option value="aktif">Belum selesai</option>
+            <option value="selesai">Selesai</option>
+          </select>
+        </label>
+        <div class="dash-stats" id="dashStats"></div>
+      </div>
+      <div id="dashList" class="dash-list"></div>
+    </div>
+  </section> -->
+
+  <!-- GABUNG -->
+  <!-- <section id="gabung" class="section wrap gabung">
+    <div>
+      <h2>Punya jasa cuci sepatu sekitar UNNES? Gabung.</h2>
+      <p class="muted">Khusus area Gunungpati, Sekaran, Tembalang, Banyumanik. Syarat: lokasi fisik jelas, bisa foto sebelum–sesudah, update status maks. 2x24 jam. Komisi 8%, tanpa biaya daftar.</p>
+      <ul class="checklist">
+        <li>Dashboard status + cetak struk kode booking</li>
+        <li>Harga acuan melindungi dari perang harga</li>
+        <li>Pencairan H+1 ke rekening / e-wallet</li>
+      </ul>
+    </div>
+    <form id="mitraForm" class="card-form">
+      <label>Nama usaha<input required placeholder="Contoh: Kinclong Sekaran"></label>
+      <label>Alamat lengkap<input required placeholder="Jl. Sekaran Raya No. ..., Gunungpati"></label>
+      <div class="row2">
+        <label>WhatsApp<input required placeholder="08xx" inputmode="tel"></label>
+        <label>Kapasitas / hari<input type="number" min="1" value="15"></label>
+      </div>
+      <button class="btn primary" type="submit">Ajukan Pendaftaran</button>
+      <p class="muted small" id="mitraMsg" role="status"></p>
+    </form>
+  </section>
+</main> -->
+
+<footer>
+  <div class="wrap foot-grid">
+    <div><strong>SikatHalus Gunungpati</strong><p class="muted small">Jl. Sekaran Raya No. 9, Gunungpati, Semarang<br>Senin–Sabtu 09.00–18.00 • CS 0822-4100-2211</p></div>
+    <div><strong>Pelanggan</strong><br><a href="#mitra">Cari mitra</a><br><a href="#harga">Harga</a><br><a href="#lacak">Lacak order</a></div>
+    <div><strong>Mitra</strong><br><a href="#gabung">Pendaftaran</a><br><a href="#cara">Standar operasional</a></div>
+  </div>
+  <p class="wrap muted small">© 2026 SikatHalus Gunungpati. Titik awal peta: Gerbang UNNES Sekaran. Jarak dihitung di perangkat Anda.</p>
+</footer>
+
+<!-- MODAL BOOKING -->
+<!-- <div class="modal-backdrop" id="modal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head">
+      <h3 id="modalTitle">Booking</h3>
+      <button id="modalClose" aria-label="Tutup">Tutup</button>
+    </div>
+    <form id="bookForm">
+      <p class="muted small" id="bookMitraInfo"></p>
+      <div class="row2">
+        <label>Layanan
+          <select id="bLayanan" required></select>
+        </label>
+        <label>Metode serah terima
+          <select id="bMetode" required>
+            <option value="Antar sendiri">Antar sendiri ke workshop</option>
+            <option value="Jemput kurir mitra (Rp15rb)">Jemput kurir mitra (+Rp15.000)</option>
+            <option value="Kirim ojek online">Kirim via ojek online (tanggung sendiri)</option>
+          </select>
+        </label>
+      </div>
+      <div class="row2">
+        <label>Nama pemesan<input id="bNama" required placeholder="Nama sesuai KTP / panggilan"></label>
+        <label>No. WhatsApp<input id="bWa" required placeholder="08xx" inputmode="tel"></label>
+      </div>
+      <label>Catatan (opsional)<input id="bCatatan" placeholder="Contoh: noda saus di mesh kanan, size 42"></label>
+      <div class="total-row"><span>Estimasi total</span><strong id="bTotal">—</strong></div>
+      <button class="btn primary full" type="submit">Buat Booking & Dapat Kode</button>
+      <p class="muted small">Dengan memesan, Anda setuju difoto kondisi awalnya dan dihubungi via WhatsApp untuk update status.</p>
+    </form>
+    <div id="bookSuccess" hidden></div>
+  </div>
+</div> -->
+
+<!-- SCRIPT TAG DI BAGIAN BAWAH index.html -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script src="mitra.js"></script>
+</body>
+</html>
