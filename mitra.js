@@ -7,6 +7,7 @@ let map = null, markers = [];
 
 function initMap() {
   if (typeof L === "undefined") return;
+  if (!document.getElementById("map")) return;
   map = L.map("map").setView([defaultLoc.lat, defaultLoc.lng], 13);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
